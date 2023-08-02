@@ -1,20 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-input (ionInput)="updateApiKey($event)" label="Input with api key" placeholder="Enter API key"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input (ionInput)="updateCatsMaxQuantity($event)" type="number" max="100" label="Maximum cats quantity"
+               placeholder="Maximum cats quantity"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input (ionInput)="updateMultiplyFactor($event)" type="number" label="Multiply array of cats by factor of"
+               placeholder="Multiply array of cats by factor of"></ion-input>
+  </ion-item>
+  <ion-button (click)="searchForCats()">Search for cats</ion-button>
+  <ion-button *ngIf="cats.length" (click)="toggleCats()">Toggle cats</ion-button>
+  <ion-list *ngIf="catsVisibility">
+    <ion-item *ngFor="let cat of cats;">
+      <app-cat  [cat]="cat"></app-cat>
+    </ion-item>
+  </ion-list>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
 </ion-content>
